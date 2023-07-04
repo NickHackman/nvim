@@ -20,7 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Loads all plugins
 require('lazy')
-    .setup('plugins', { change_detection = { notify = false } })
+    .setup('config.plugins', { change_detection = { notify = false } })
 
 require('config')
-require('lsp')
