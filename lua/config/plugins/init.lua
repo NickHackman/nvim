@@ -1,5 +1,6 @@
 -- This file contains plugins that require minimal to
--- no custom configuration. The files in this directory
+-- no custom configuration. This file will be required by lazy when
+-- starting up. The files in this directory
 -- outline other plugins and more custom configuration.
 return {
     -- Colorscheme
@@ -21,10 +22,11 @@ return {
         event = 'VimEnter',
         config = function()
             require('dashboard').setup {
-                -- config
+                theme = 'hyper',
+                shortcut_type = 'number',
             }
         end,
-        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
 
     -- Status line

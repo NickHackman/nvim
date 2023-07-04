@@ -24,3 +24,10 @@ keymap.set('n', '<leader>g', ':Neogit<CR>', { desc = "Launch Magit" })
 
 -- <leader>p
 keymap.set('n', '<leader>p', ':Neotree toggle<CR>', { desc = "Open Project" })
+
+-- <leader>e
+keymap.set("n", "<leader>ex", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>ew", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>ed", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>el", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>eq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
