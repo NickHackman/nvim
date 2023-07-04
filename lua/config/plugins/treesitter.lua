@@ -9,15 +9,11 @@ return {
         },
         build = ':TSUpdate',
         config = function()
-            local lspconfig = require('lspconfig')
-
-            lspconfig.util.available_servers()
-
             require 'nvim-treesitter.configs'.setup {
                 -- Supported Treesitter languages
                 --
                 -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "kotlin" },
+                ensure_installed = "all",
                 auto_install = true,
                 highlight = {
                     enable = true,
