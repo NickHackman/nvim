@@ -49,7 +49,7 @@ keymap.set('n', '<leader><leader>', telescope.find_files, opts { desc = 'Search 
 
 -- <leader>[w]indow
 keymap.set('n', '<leader>wv', '<c-w>v', opts { desc = '[W]indow [V]ertical Split' })
-keymap.set('n', '<leader>ws', '<c-w>s', opts { desc = '[Window] [S]plit' })
+keymap.set('n', '<leader>ws', '<c-w>s', opts { desc = '[W]indow [S]plit' })
 keymap.set('n', '<leader>wl', '<c-w>l', opts { desc = '[W]indow Right' })
 keymap.set('n', '<leader>wh', '<c-w>h', opts { desc = '[W]indow Left' })
 keymap.set('n', '<leader>wj', '<c-w>j', opts { desc = '[W]indow Down' })
@@ -68,13 +68,12 @@ keymap.set('n', '<leader>bp', ':bprev<CR>', opts { desc = '[B]uffer [P]revious' 
 -- <leader>d
 keymap.set('n', '<leader>dt', '<cmd>TroubleToggle<cr>', opts { desc = '[D]iagnostics [T]oggle' })
 keymap.set('n', '<leader>dw', '<cmd>TroubleToggle workspace_diagnostics<cr>', opts { desc = '[D]iagnostics [W]orkspace' })
-keymap.set('n', '<leader>ed', '<cmd>TroubleToggle document_diagnostics<cr>', opts { desc = '[D]iagnostics [D]ocument' })
+keymap.set('n', '<leader>dd', '<cmd>TroubleToggle document_diagnostics<cr>', opts { desc = '[D]iagnostics [D]ocument' })
 keymap.set('n', '<leader>dl', '<cmd>TroubleToggle loclist<cr>', opts { desc = '[D]iagnostics [L]ocal' })
 keymap.set('n', '<leader>dq', '<cmd>TroubleToggle quickfix<cr>', opts { desc = '[D]iagnostics [Q]uickfix' })
 
 -- <leader>[o]pen
 keymap.set('n', '<leader>op', ':Neotree toggle<CR>', opts { desc = '[O]pen [P]roject' })
-keymap.set('n', '<leader>ol', 'gx', opts { desc = '[O]pen [L]ink' })
 keymap.set('n', '<leader>og', ':Neogit<CR>', opts { desc = '[O]pen Ma[g]it' })
 
 -- open terminal on the bottom with no line numbers
@@ -88,3 +87,28 @@ keymap.set('v', '>', '>gv', opts {})
 -- Center search results
 keymap.set('n', 'n', 'nzz', opts {})
 keymap.set('n', 'N', 'Nzz', opts {})
+
+--- Configure LSP keybindings for on_attach
+function Lsp_keybindings()
+    -- [G]oto
+    keymap.set('n', 'gd', vim.lsp.buf.definition, opts { desc = '[G]oto [D]efinition' })
+    keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts { desc = '[G]oto [R]eferences' })
+    keymap.set('n', 'gI', vim.lsp.buf.implementation, opts { desc = '[G]oto [I]mplementation' })
+    keymap.set('n', 'gD', vim.lsp.buf.type_definition, opts { desc = 'Type [D]efinition' })
+
+    -- Symbols Search
+    keymap.set('n', '<leader>d?', require('telescope.builtin').lsp_document_symbols, opts { desc = 'Document Symbols' })
+    keymap.set('n', '<leader>?', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+        opts { desc = 'Workspace Symbols' })
+
+    keymap.set('n', 'K', vim.lsp.buf.hover, opts { desc = 'Hover Documentation' })
+    keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts { desc = 'Signature Documentation' })
+
+    keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts { desc = '[R]e[n]ame' })
+    keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts { desc = '[C]ode [A]ction' })
+end
+
+-- Export Lsp_keybindings to be used in lsp configuration
+return {
+    lsp_keybindings = Lsp_keybindings
+}
