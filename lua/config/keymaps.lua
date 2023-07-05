@@ -75,6 +75,7 @@ keymap.set('n', '<leader>dq', '<cmd>TroubleToggle quickfix<cr>', opts { desc = '
 -- <leader>[o]pen
 keymap.set('n', '<leader>op', ':Neotree toggle<CR>', opts { desc = '[O]pen [P]roject' })
 keymap.set('n', '<leader>og', ':Neogit<CR>', opts { desc = '[O]pen Ma[g]it' })
+keymap.set('n', '<leader>ou', ':UndotreeToggle<CR>', opts { desc = '[O]pen Undotree' })
 
 -- open terminal on the bottom with no line numbers
 keymap.set('n', '<leader>ot', '<cmd>sp<bar>term<cr><c-w>J:resize10<cr>:setlocal nonumber<cr>i',

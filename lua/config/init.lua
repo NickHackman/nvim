@@ -12,6 +12,7 @@ opt.completeopt = 'menuone,noinsert,noselect' -- better autocomplete
 opt.clipboard = 'unnamedplus'                 -- Sync clipboard between OS and Neovim.
 opt.termguicolors = true                      -- 24-bit color
 opt.showmatch = true                          -- show matching paren
+opt.undofile = true                           -- undofile for use with undotree
 
 -------------------------------------------
 -- Case Insensitive Search

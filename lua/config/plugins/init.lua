@@ -54,6 +54,11 @@ return {
     -- https://github.com/folke/which-key.nvim
     { 'folke/which-key.nvim', opts = {} },
 
+    -- Better undoing
+    --
+    -- https://github.com/mbbill/undotree
+    'mbbill/undotree',
+
     -- Fuzzy Finder (files, lsp, etc)
     --
     -- https://github.com/nvim-telescope/telescope.nvim
