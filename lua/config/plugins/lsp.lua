@@ -1,6 +1,6 @@
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
--- LSP specific keymaps
+-- LSP specific configuration
 --
 -- These are only applied when the LSP is attached and won't apply to buffers where there is no active LSP.
 local on_attach = function(client, bufnr)
