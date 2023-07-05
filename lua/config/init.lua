@@ -13,6 +13,8 @@ opt.clipboard = 'unnamedplus'                 -- Sync clipboard between OS and N
 opt.termguicolors = true                      -- 24-bit color
 opt.showmatch = true                          -- show matching paren
 opt.undofile = true                           -- undofile for use with undotree
+opt.signcolumn = 'yes'
+opt.relativenumber = true
 
 -------------------------------------------
 -- Case Insensitive Search

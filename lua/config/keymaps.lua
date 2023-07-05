@@ -8,7 +8,8 @@ wk.register({
         w = { name = 'Window' },
         b = { name = 'Buffer' },
         o = { name = 'Open' },
-        d = { name = 'Diagnostics' }
+        d = { name = 'Diagnostics' },
+        g = { name = 'Git' }
     }
 })
 
@@ -109,7 +110,47 @@ function Lsp_keybindings()
     keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts { desc = '[C]ode [A]ction' })
 end
 
+-- Configure GitSigns keybindings for on_attach
+--
+-- https://github.com/lewis6991/gitsigns.nvim#keymaps
+function Gitsigns_keybindings(_)
+    local gs = package.loaded.gitsigns
+
+    keymap.set('n', '<leader>gp', function()
+        if vim.wo.diff then
+            return '<Ignore>'
+        end
+
+        vim.schedule(function()
+            gs.prev_hunk()
+        end)
+
+        return '<Ignore>'
+    end, opts { expr = true, desc = '[G]it [P]revious Hunk' })
+
+    keymap.set('n', '<leader>gn', function()
+        if vim.wo.diff then
+            return '<Ignore>'
+        end
+
+        vim.schedule(function()
+            gs.next_hunk()
+        end)
+
+        return '<Ignore>'
+    end, opts { expr = true, desc = '[G]it [N]ext Hunk' })
+
+    keymap.set('n', '<leader>gg', ':Neogit<CR>', opts { desc = '[O]pen Ma[g]it' })
+    keymap.set('n', '<leader>gs', gs.stage_hunk, opts { desc = '[G]it [S]tage Hunk' })
+    keymap.set('n', '<leader>gr', gs.reset_hunk, opts { desc = '[G]it [R]eset Hunk' })
+    keymap.set('n', '<leader>gS', gs.stage_buffer, opts { desc = '[G]it [S]tage Buffer' })
+    keymap.set('n', '<leader>gR', gs.reset_buffer, opts { desc = '[G]it [R]eset Buffer' })
+    keymap.set('n', '<leader>gb', gs.toggle_current_line_blame, opts { desc = '[G]it [B]lame Line' })
+    keymap.set('n', '<leader>gB', function() gs.blame_line { full = true } end, opts { desc = '[G]it [B]lame Hunk' })
+end
+
 -- Export Lsp_keybindings to be used in lsp configuration
 return {
-    lsp_keybindings = Lsp_keybindings
+    lsp_keybindings = Lsp_keybindings,
+    gitsigns_keybindings = Gitsigns_keybindings,
 }

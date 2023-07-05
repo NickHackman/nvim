@@ -49,6 +49,18 @@ return {
     -- https://github.com/tpope/vim-sleuth
     'tpope/vim-sleuth',
 
+    -- Gitsigns
+    --
+    -- https://github.com/lewis6991/gitsigns.nvim
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup {
+                on_attach = require('config.keymaps').gitsigns_keybindings
+            }
+        end
+    },
+
     -- Useful plugin to show you pending keybinds.
     --
     -- https://github.com/folke/which-key.nvim
