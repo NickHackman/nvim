@@ -8,6 +8,7 @@ wk.register({
         w = { name = 'Window' },
         b = { name = 'Buffer' },
         o = { name = 'Open' },
+        c = { name = 'Code' },
         d = { name = 'Diagnostics' },
         g = { name = 'Git' }
     }
@@ -105,7 +106,7 @@ function Lsp_keybindings()
     keymap.set('n', 'K', vim.lsp.buf.hover, opts { desc = 'Hover Documentation' })
     keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts { desc = 'Signature Documentation' })
 
-    keymap.set('n', '<leader>cr', vim.lsp.buf.rename, opts { desc = 'Code [R]ename' })
+    keymap.set('n', '<leader>cr', vim.lsp.buf.rename, opts { desc = '[C]ode [R]ename' })
     keymap.set('v', '<leader>cR', require('refactoring').select_refactor, opts { desc = "[C]ode [R]efactor" })
     keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts { desc = '[C]ode [A]ction' })
 end
