@@ -93,19 +93,18 @@ keymap.set('n', 'N', 'Nzz', opts {})
 function Lsp_keybindings()
     -- [G]oto
     keymap.set('n', 'gd', vim.lsp.buf.definition, opts { desc = '[G]oto [D]efinition' })
-    keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts { desc = '[G]oto [R]eferences' })
+    keymap.set('n', 'gr', telescope.lsp_references, opts { desc = '[G]oto [R]eferences' })
     keymap.set('n', 'gI', vim.lsp.buf.implementation, opts { desc = '[G]oto [I]mplementation' })
     keymap.set('n', 'gD', vim.lsp.buf.type_definition, opts { desc = 'Type [D]efinition' })
 
     -- Symbols Search
-    keymap.set('n', '<leader>d?', require('telescope.builtin').lsp_document_symbols, opts { desc = 'Document Symbols' })
-    keymap.set('n', '<leader>?', require('telescope.builtin').lsp_dynamic_workspace_symbols,
-        opts { desc = 'Workspace Symbols' })
+    keymap.set('n', '<leader>d?', telescope.lsp_document_symbols, opts { desc = 'Document Symbols' })
+    keymap.set('n', '<leader>?', telescope.lsp_dynamic_workspace_symbols, opts { desc = 'Workspace Symbols' })
 
     keymap.set('n', 'K', vim.lsp.buf.hover, opts { desc = 'Hover Documentation' })
     keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts { desc = 'Signature Documentation' })
 
-    keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts { desc = '[R]e[n]ame' })
+    keymap.set('n', '<leader>cr', vim.lsp.buf.rename, opts { desc = 'Code [R]ename' })
     keymap.set('v', '<leader>cR', require('refactoring').select_refactor, opts { desc = "[C]ode [R]efactor" })
     keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts { desc = '[C]ode [A]ction' })
 end
