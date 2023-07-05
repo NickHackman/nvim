@@ -106,6 +106,7 @@ function Lsp_keybindings()
     keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts { desc = 'Signature Documentation' })
 
     keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts { desc = '[R]e[n]ame' })
+    keymap.set('v', '<leader>cR', require('refactoring').select_refactor, opts { desc = "[C]ode [R]efactor" })
     keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts { desc = '[C]ode [A]ction' })
 end
 

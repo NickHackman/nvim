@@ -54,6 +54,17 @@ return {
     -- https://github.com/folke/which-key.nvim
     { 'folke/which-key.nvim', opts = {} },
 
+    -- Fast Refactoring
+    --
+    -- https://github.com/theprimeagen/refactoring.nvim
+    {
+        'theprimeagen/refactoring.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter'
+        }
+    },
+
     -- Better undoing
     --
     -- https://github.com/mbbill/undotree
