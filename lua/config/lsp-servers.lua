@@ -1,13 +1,17 @@
--- Neovim LSPs:
---
--- This should include all LSPs by name provided in nvim-lspconfig and their respected settings.
+-- This should include all LSPs by name provided in nvim-lspconfig and their respected settings
+-- and null-ls formatters and diagnostics tools.
 --
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
---
--- This should also include any null-ls formatters and diagnostics tools.
---
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 return {
+	-- Markdowns
+	--
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#marksman
+	marksman = {
+		diagnostics = { "proselint", "write_good" },
+		formatters = { "prettier" },
+	},
+
 	-- Kotlin
 	--
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#kotlin_language_server
@@ -42,7 +46,7 @@ return {
 	--
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
 	pyright = {
-		formatters = { "autopep8" },
+		formatters = { "autopep8", "isort" },
 		diagnostics = { "mypy", "pylint" },
 	},
 
