@@ -1,4 +1,4 @@
-require('config.keymaps')
+require("config.keymaps")
 
 local opt = vim.opt
 
@@ -6,14 +6,14 @@ local opt = vim.opt
 -- General
 -------------------------------------------
 opt.number = true                             -- show line numbers
-opt.mouse = 'a'                               -- enable mouse
+opt.mouse = "a"                               -- enable mouse
 opt.swapfile = false                          -- disable vim swapfiles
-opt.completeopt = 'menuone,noinsert,noselect' -- better autocomplete
-opt.clipboard = 'unnamedplus'                 -- Sync clipboard between OS and Neovim.
+opt.completeopt = "menuone,noinsert,noselect" -- better autocomplete
+opt.clipboard = "unnamedplus"                 -- Sync clipboard between OS and Neovim.
 opt.termguicolors = true                      -- 24-bit color
 opt.showmatch = true                          -- show matching paren
 opt.undofile = true                           -- undofile for use with undotree
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 opt.relativenumber = true
 
 -------------------------------------------
