@@ -61,6 +61,44 @@ return {
         end
     },
 
+    -- Neogit a Neovim Magit
+    --
+    -- https://github.com/NeogitOrg/neogit
+    {
+        'NeogitOrg/neogit',
+        dependencies = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('neogit').setup {
+                auto_refresh = true
+            }
+        end
+    },
+
+    -- Filesystem Tree
+    --
+    -- https://github.com/nvim-neo-tree/neo-tree.nvim
+    {
+        'nvim-neo-tree/neo-tree.nvim',
+        version = "*",
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons',
+            'MunifTanjim/nui.nvim',
+        },
+        config = function()
+            require('neo-tree').setup()
+        end,
+    },
+
+    -- Improved diagnostics
+    --
+    -- https://github.com/folke/trouble.nvim
+    {
+        'folke/trouble.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {},
+    },
+
     -- Useful plugin to show you pending keybinds.
     --
     -- https://github.com/folke/which-key.nvim
