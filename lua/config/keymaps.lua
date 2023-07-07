@@ -1,6 +1,15 @@
 local telescope = require("telescope.builtin")
-local keymap = vim.keymap
 local wk = require("which-key")
+
+local keymap = require("core.keymap")
+
+local M = {}
+local default_options = { noremap = true, silent = true }
+
+local nmap = keymap.map("n", default_options)
+local vmap = keymap.map("v", default_options)
+local cmd = keymap.cmd
+local opts = keymap.opts
 
 -- Reigster keymaps in which-key
 wk.register({
@@ -14,137 +23,128 @@ wk.register({
 	},
 })
 
---- Creates options to provide to {vim.keymap.set}.
--- adds the default options of { noremap = true, silent = true }
----@param custom_opts table | nil custom options like 'desc'
----@return table options combined with the default
-local opts = function(custom_opts)
-	return vim.tbl_extend("force", { noremap = true, silent = true }, custom_opts)
-end
+nmap({
+	-- <leader>
+	{ "<leader>/", telescope.live_grep, opts("Search by Grep") },
+	{ "<leader><leader>", telescope.find_files, opts("Search [G]it [F]iles") },
 
--- <leader>
-keymap.set("n", "<leader>/", telescope.live_grep, opts({ desc = "Search by Grep" }))
-keymap.set("n", "<leader><leader>", telescope.find_files, opts({ desc = "Search [G]it [F]iles" }))
+	-- <leader>[w]indow
+	{ "<leader>wv", "<c-w>v", opts("[W]indow [V]ertical Split") },
+	{ "<leader>ws", "<c-w>s", opts("[W]indow [S]plit") },
+	{ "<leader>wl", "<c-w>l", opts("[W]indow Right") },
+	{ "<leader>wh", "<c-w>h", opts("[W]indow Left") },
+	{ "<leader>wj", "<c-w>j", opts("[W]indow Down") },
+	{ "<leader>wk", "<c-w>k", opts("[W]indow Up") },
+	{ "<leader>wq", ":wq<CR>", opts("[W]indow [Q]uit") },
+	{ "<leader>wH", cmd("vertical resize +5"), opts("[W]indow Resize Left") },
+	{ "<leader>wL", cmd("vertical resize -5"), opts("[W]indow Resize Right") },
+	{ "<leader>wJ", cmd("resize -5"), opts("[W]indow Resize Down") },
+	{ "<leader>wK", cmd("resize +5"), opts("[W]indow Resize Up") },
 
--- <leader>[w]indow
-keymap.set("n", "<leader>wv", "<c-w>v", opts({ desc = "[W]indow [V]ertical Split" }))
-keymap.set("n", "<leader>ws", "<c-w>s", opts({ desc = "[W]indow [S]plit" }))
-keymap.set("n", "<leader>wl", "<c-w>l", opts({ desc = "[W]indow Right" }))
-keymap.set("n", "<leader>wh", "<c-w>h", opts({ desc = "[W]indow Left" }))
-keymap.set("n", "<leader>wj", "<c-w>j", opts({ desc = "[W]indow Down" }))
-keymap.set("n", "<leader>wk", "<c-w>k", opts({ desc = "[W]indow Up" }))
-keymap.set("n", "<leader>wq", ":wq<CR>", opts({ desc = "[W]indow [Q]uit" }))
-keymap.set("n", "<leader>wH", ":vertical resize +5<CR>", opts({ desc = "[W]indow Resize Left" }))
-keymap.set("n", "<leader>wL", ":vertical resize -5<CR>", opts({ desc = "[W]indow Resize Right" }))
-keymap.set("n", "<leader>wJ", ":resize -5<CR>", opts({ desc = "[W]indow Resize Down" }))
-keymap.set("n", "<leader>wK", ":resize +5<CR>", opts({ desc = "[W]indow Resize Up" }))
+	-- <leader>[b]uffer
+	{ "<leader>bs", telescope.buffers, opts("[B]uffer [S]earch") },
+	{ "<leader>bn", cmd("bnext"), opts("[B]uffer [N]ext") },
+	{ "<leader>bp", cmd("bprev"), opts("[B]uffer [P]revious") },
 
--- <leader>[b]uffer
-keymap.set("n", "<leader>bs", telescope.buffers, opts({ desc = "[B]uffer [S]earch" }))
-keymap.set("n", "<leader>bn", ":bnext<CR>", opts({ desc = "[B]uffer [N]ext" }))
-keymap.set("n", "<leader>bp", ":bprev<CR>", opts({ desc = "[B]uffer [P]revious" }))
+	-- <leader>d
+	{ "<leader>dt", cmd("TroubleToggle"), opts("[D]iagnostics [T]oggle") },
+	{ "<leader>dw", cmd("TroubleToggle workspace_diagnostics"), opts("[D]iagnostics [W]orkspace") },
+	{ "<leader>dd", cmd("TroubleToggle document_diagnostics"), opts("[D]iagnostics [D]ocument") },
+	{ "<leader>dl", cmd("TroubleToggle loclist"), opts("[D]iagnostics [L]ocal") },
+	{ "<leader>dq", cmd("TroubleToggle quickfix"), opts("[D]iagnostics [Q]uickfix") },
 
--- <leader>d
-keymap.set("n", "<leader>dt", "<cmd>TroubleToggle<cr>", opts({ desc = "[D]iagnostics [T]oggle" }))
-keymap.set(
-	"n",
-	"<leader>dw",
-	"<cmd>TroubleToggle workspace_diagnostics<cr>",
-	opts({ desc = "[D]iagnostics [W]orkspace" })
-)
-keymap.set(
-	"n",
-	"<leader>dd",
-	"<cmd>TroubleToggle document_diagnostics<cr>",
-	opts({ desc = "[D]iagnostics [D]ocument" })
-)
-keymap.set("n", "<leader>dl", "<cmd>TroubleToggle loclist<cr>", opts({ desc = "[D]iagnostics [L]ocal" }))
-keymap.set("n", "<leader>dq", "<cmd>TroubleToggle quickfix<cr>", opts({ desc = "[D]iagnostics [Q]uickfix" }))
+	-- <leader>[o]pen
+	{ "<leader>op", cmd("Neotree toggle"), opts("[O]pen [P]roject") },
+	{ "<leader>og", cmd("Neogit"), opts("[O]pen Ma[g]it") },
+	{ "<leader>ou", cmd("UndotreeToggle"), opts("[O]pen Undotree") },
 
--- <leader>[o]pen
-keymap.set("n", "<leader>op", ":Neotree toggle<CR>", opts({ desc = "[O]pen [P]roject" }))
-keymap.set("n", "<leader>og", ":Neogit<CR>", opts({ desc = "[O]pen Ma[g]it" }))
-keymap.set("n", "<leader>ou", ":UndotreeToggle<CR>", opts({ desc = "[O]pen Undotree" }))
+	-- open terminal on the bottom with no line numbers
+	{ "<leader>ot", "<cmd>sp<bar>term<cr><c-w>J:resize10<cr>:setlocal nonumber<cr>i", opts("[O]pen [T]erminal") },
 
--- open terminal on the bottom with no line numbers
-keymap.set(
-	"n",
-	"<leader>ot",
-	"<cmd>sp<bar>term<cr><c-w>J:resize10<cr>:setlocal nonumber<cr>i",
-	opts({ desc = "[O]pen [T]erminal" })
-)
+	-- Center search results
+	{ "n", "nzz" },
+	{ "N", "Nzz" },
+})
 
--- Improved indentation
-keymap.set("v", "<", "<gv", opts({}))
-keymap.set("v", ">", ">gv", opts({}))
-
--- Center search results
-keymap.set("n", "n", "nzz", opts({}))
-keymap.set("n", "N", "Nzz", opts({}))
+vmap({
+	-- Improved indentation
+	{ "<", "<gv" },
+	{ ">", ">gv" },
+})
 
 --- Configure LSP keybindings for on_attach
-function Lsp_keybindings()
-	-- [G]oto
-	keymap.set("n", "gd", vim.lsp.buf.definition, opts({ desc = "[G]oto [D]efinition" }))
-	keymap.set("n", "gr", telescope.lsp_references, opts({ desc = "[G]oto [R]eferences" }))
-	keymap.set("n", "gI", vim.lsp.buf.implementation, opts({ desc = "[G]oto [I]mplementation" }))
-	keymap.set("n", "gD", vim.lsp.buf.type_definition, opts({ desc = "Type [D]efinition" }))
+function M.lsp_keybindings()
+	nmap({
+		-- [G]oto
+		{ "gd", vim.lsp.buf.definition, opts("[G]oto [D]efinition") },
+		{ "gr", telescope.lsp_references, opts("[G]oto [R]eferences") },
+		{ "gI", vim.lsp.buf.implementation, opts("[G]oto [I]mplementation") },
+		{ "gD", vim.lsp.buf.type_definition, opts("Type [D]efinition") },
 
-	-- Symbols Search
-	keymap.set("n", "<leader>d?", telescope.lsp_document_symbols, opts({ desc = "Document Symbols" }))
-	keymap.set("n", "<leader>?", telescope.lsp_dynamic_workspace_symbols, opts({ desc = "Workspace Symbols" }))
+		-- Symbols Search
+		{ "<leader>d?", telescope.lsp_document_symbols, opts("Document Symbols") },
+		{ "<leader>?", telescope.lsp_dynamic_workspace_symbols, opts("Workspace Symbols") },
+		{ "K", vim.lsp.buf.hover, opts("Hover Documentation") },
+		{ "<C-k>", vim.lsp.buf.signature_help, opts("Signature Documentation") },
 
-	keymap.set("n", "K", vim.lsp.buf.hover, opts({ desc = "Hover Documentation" }))
-	keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts({ desc = "Signature Documentation" }))
+		{ "<leader>cr", vim.lsp.buf.rename, opts("[C]ode [R]ename") },
+		{ "<leader>ca", vim.lsp.buf.code_action, opts("[C]ode [A]ction") },
+	})
 
-	keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts({ desc = "[C]ode [R]ename" }))
-	keymap.set("v", "<leader>cR", require("refactoring").select_refactor, opts({ desc = "[C]ode [R]efactor" }))
-	keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts({ desc = "[C]ode [A]ction" }))
+	vmap({
+		{ "<leader>cR", require("refactoring").select_refactor, opts("[C]ode [R]efactor") },
+	})
 end
 
 -- Configure GitSigns keybindings for on_attach
 --
 -- https://github.com/lewis6991/gitsigns.nvim#keymaps
-function Gitsigns_keybindings(_)
+function M.gitsigns_keybindings(_)
 	local gs = package.loaded.gitsigns
 
-	keymap.set("n", "<leader>gp", function()
-		if vim.wo.diff then
-			return "<Ignore>"
-		end
+	nmap({
+		{
+			"<leader>gn",
+			function()
+				if not vim.wo.diff then
+					vim.schedule(function()
+						gs.next_hunk()
+					end)
+				end
 
-		vim.schedule(function()
-			gs.prev_hunk()
-		end)
+				return "<Ignore>"
+			end,
+			opts("[G]it [N]ext Hunk"),
+		},
 
-		return "<Ignore>"
-	end, opts({ expr = true, desc = "[G]it [P]revious Hunk" }))
+		{
+			"<leader>gp",
+			function()
+				if not vim.wo.diff then
+					vim.schedule(function()
+						gs.prev_hunk()
+					end)
+				end
 
-	keymap.set("n", "<leader>gn", function()
-		if vim.wo.diff then
-			return "<Ignore>"
-		end
+				return "<Ignore>"
+			end,
+			opts("[G]it [P]revious Hunk"),
+		},
 
-		vim.schedule(function()
-			gs.next_hunk()
-		end)
-
-		return "<Ignore>"
-	end, opts({ expr = true, desc = "[G]it [N]ext Hunk" }))
-
-	keymap.set("n", "<leader>gg", ":Neogit<CR>", opts({ desc = "[O]pen Ma[g]it" }))
-	keymap.set("n", "<leader>gs", gs.stage_hunk, opts({ desc = "[G]it [S]tage Hunk" }))
-	keymap.set("n", "<leader>gr", gs.reset_hunk, opts({ desc = "[G]it [R]eset Hunk" }))
-	keymap.set("n", "<leader>gS", gs.stage_buffer, opts({ desc = "[G]it [S]tage Buffer" }))
-	keymap.set("n", "<leader>gR", gs.reset_buffer, opts({ desc = "[G]it [R]eset Buffer" }))
-	keymap.set("n", "<leader>gb", gs.toggle_current_line_blame, opts({ desc = "[G]it [B]lame Line" }))
-	keymap.set("n", "<leader>gB", function()
-		gs.blame_line({ full = true })
-	end, opts({ desc = "[G]it [B]lame Hunk" }))
+		{ "<leader>gg", cmd("Neogit"), opts("[O]pen Ma[g]it") },
+		{ "<leader>gs", gs.stage_hunk, opts("[G]it [S]tage Hunk") },
+		{ "<leader>gr", gs.reset_hunk, opts("[G]it [R]eset Hunk") },
+		{ "<leader>gS", gs.stage_buffer, opts("[G]it [S]tage Buffer") },
+		{ "<leader>gR", gs.reset_buffer, opts("[G]it [R]eset Buffer") },
+		{ "<leader>gb", gs.toggle_current_line_blame, opts("[G]it [B]lame Line") },
+		{
+			"<leader>gB",
+			function()
+				gs.blame_line({ full = true })
+			end,
+			opts("[G]it [B]lame Hunk"),
+		},
+	})
 end
 
--- Export Lsp_keybindings to be used in lsp configuration
-return {
-	lsp_keybindings = Lsp_keybindings,
-	gitsigns_keybindings = Gitsigns_keybindings,
-}
+return M
