@@ -89,6 +89,18 @@ function M.lsp_keybindings()
 
 		{ "<leader>cr", vim.lsp.buf.rename, opts("[C]ode [R]ename") },
 		{ "<leader>ca", vim.lsp.buf.code_action, opts("[C]ode [A]ction") },
+		{
+			"<leader>cf",
+			function()
+				vim.lsp.buf.format({
+					filter = function(format_client)
+						-- By default, ignore any formatters provider by other LSPs
+						return format_client.name == "null-ls"
+					end,
+				})
+			end,
+			opts("[C]ode [F]ormat"),
+		},
 	})
 
 	vmap({
