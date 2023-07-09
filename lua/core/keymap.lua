@@ -1,3 +1,6 @@
+--- Keymap Helpers
+--
+-- Based on https://github.com/nvimdev/dope/blob/d7ed25abf2a5395b34e1b2a01049c704fc5cff46/lua/core/keymap.lua
 local M = {}
 
 --- Performs |assert|ions on a mapping.
