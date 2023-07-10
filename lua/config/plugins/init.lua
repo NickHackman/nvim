@@ -49,6 +49,14 @@ return {
 	-- https://github.com/tpope/vim-sleuth
 	"tpope/vim-sleuth",
 
+	{
+		"johmsalas/text-case.nvim",
+		config = function()
+			require("textcase").setup({})
+			require("telescope").load_extension("textcase")
+		end,
+	},
+
 	-- Gitsigns
 	--
 	-- https://github.com/lewis6991/gitsigns.nvim

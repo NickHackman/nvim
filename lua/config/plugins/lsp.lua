@@ -31,7 +31,7 @@ return {
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
-					on_attach = require("config.keymaps").lsp_keybindings(),
+					on_attach = require("config.keymaps").lsp_keybindings,
 					settings = servers[server_name].settings or {},
 				})
 			end,

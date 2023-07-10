@@ -101,6 +101,12 @@ function M.lsp_keybindings()
 			end,
 			opts("[C]ode [F]ormat"),
 		},
+
+		{
+			"<leader>cR",
+			cmd("TextCaseOpenTelescopeLSPChange"),
+			opts("[C]ode [R]ename Case"),
+		},
 	})
 
 	vmap({
