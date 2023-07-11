@@ -49,6 +49,9 @@ return {
 	-- https://github.com/tpope/vim-sleuth
 	"tpope/vim-sleuth",
 
+	-- camelCase to snake_case
+	--
+	-- https://github.com/johmsalas/text-case.nvim
 	{
 		"johmsalas/text-case.nvim",
 		config = function()
@@ -121,6 +124,18 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
+	},
+
+	-- Comment
+	--
+	-- https://github.com/numToStr/Comment.nvim
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup({
+				mappings = { basic = false, extra = false },
+			})
+		end,
 	},
 
 	-- Better undoing

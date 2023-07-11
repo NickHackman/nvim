@@ -8,6 +8,7 @@ local default_options = { noremap = true, silent = true }
 
 local nmap = keymap.map("n", default_options)
 local vmap = keymap.map("v", default_options)
+local xmap = keymap.map("x", default_options)
 local cmd = keymap.cmd
 local opts = keymap.opts
 
@@ -111,6 +112,8 @@ function M.lsp_keybindings()
 
 	vmap({
 		{ "<leader>cR", require("refactoring").select_refactor, opts("[C]ode [R]efactor") },
+		{ "<leader>/", "<Plug>(comment_toggle_linewise_visual)", opts("Comment") },
+		{ "<leader>cB", "<Plug>(comment_toggle_blockwise_visual)", opts("[C]ode [B]lockwise") },
 	})
 end
 
