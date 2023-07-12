@@ -8,7 +8,6 @@ local default_options = { noremap = true, silent = true }
 
 local nmap = keymap.map("n", default_options)
 local vmap = keymap.map("v", default_options)
-local xmap = keymap.map("x", default_options)
 local cmd = keymap.cmd
 local opts = keymap.opts
 
