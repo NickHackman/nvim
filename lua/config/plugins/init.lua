@@ -77,10 +77,13 @@ return {
 	-- https://github.com/NeogitOrg/neogit
 	{
 		"NeogitOrg/neogit",
-		dependencies = "nvim-lua/plenary.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
 		config = function()
 			require("neogit").setup({
 				auto_refresh = true,
+				integrations = {
+					diffview = true
+				}
 			})
 		end,
 	},
