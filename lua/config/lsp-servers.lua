@@ -42,6 +42,13 @@ return {
 		formatters = { "prettier" },
 	},
 
+	-- YAML
+	--
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls
+	yamlls = {
+		formatters = { "prettier" },
+	},
+
 	-- Python
 	--
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
