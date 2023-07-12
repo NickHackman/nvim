@@ -38,7 +38,7 @@ return {
 	--
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls
 	jsonls = {
-		diagnostics = { "jsonlint" },
+		diagnostics = { "jsonlint", "spectral" },
 		formatters = { "prettier" },
 	},
 
@@ -47,6 +47,7 @@ return {
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls
 	yamlls = {
 		formatters = { "prettier" },
+		diagnostics = { "spectral" },
 	},
 
 	-- Python
