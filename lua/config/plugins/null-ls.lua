@@ -13,6 +13,7 @@ local function on_attach(client, bufnr)
 						-- By default, ignore any formatters provider by other LSPs
 						return format_client.name == "null-ls"
 					end,
+					timeout_ms = 2000,
 				})
 			end,
 		})
