@@ -34,6 +34,26 @@ return {
 				settings = server.settings or {},
 			})
 		end
+
+		local configs = require("lspconfig.configs")
+
+		-- Kotlin LSP
+		--
+		-- Upstream: https://github.com/Kotlin/kotlin-lsp
+		-- configuration: https://github.com/neovim/nvim-lspconfig/pull/3867
+		configs.kotlin_lsp = {
+			default_config = {
+				cmd = { "kotlin-lsp", "--stdio" }, -- Adjust path if needed
+				filetypes = { "kotlin", "kotlin_script", "gradle.kts" },
+				root_dir = lspconfig.util.root_pattern("settings.gradle.kts", "build.gradle.kts", ".git"),
+				settings = {}, -- No custom settings needed by default
+			},
+		}
+
+		lspconfig.kotlin_lsp.setup({
+			capabilities = capabilities,
+			on_attach = require("config.keymaps").lsp_keybindings,
+			settings = {},
 		})
 	end,
 }
