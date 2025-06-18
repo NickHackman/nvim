@@ -16,7 +16,8 @@ return {
 				ensure_installed = "all",
 				auto_install = true,
 				sync_install = false,
-				ignore_install = {},
+				-- https://github.com/nvim-orgmode/orgmode?tab=readme-ov-file#installation
+				ignore_install = {'org'},
 				modules = {},
 				highlight = {
 					enable = true,
