@@ -27,14 +27,13 @@ return {
 			ensure_installed = vim.tbl_keys(servers),
 		})
 
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-					on_attach = require("config.keymaps").lsp_keybindings,
-					settings = servers[server_name].settings or {},
-				})
-			end,
+		for name, server in pairs(servers) do
+			lspconfig[name].setup({
+				capabilities = capabilities,
+				on_attach = require("config.keymaps").lsp_keybindings,
+				settings = server.settings or {},
+			})
+		end
 		})
 	end,
 }
