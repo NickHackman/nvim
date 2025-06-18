@@ -11,16 +11,14 @@ local vmap = keymap.map("v", default_options)
 local cmd = keymap.cmd
 local opts = keymap.opts
 
--- Reigster keymaps in which-key
-wk.register({
-	["<leader>"] = {
-		w = { name = "Window" },
-		b = { name = "Buffer" },
-		o = { name = "Open" },
-		c = { name = "Code" },
-		d = { name = "Diagnostics" },
-		g = { name = "Git" },
-	},
+-- Add keymaps in which-key
+wk.add({
+	{ "<leader>b", group = "Buffer" },
+	{ "<leader>c", group = "Code" },
+	{ "<leader>d", group = "Diagnostics" },
+	{ "<leader>g", group = "Git" },
+	{ "<leader>o", group = "Open" },
+	{ "<leader>w", group = "Window" },
 })
 
 nmap({
