@@ -28,8 +28,8 @@ return {
 
 	-- Typescript
 	--
-	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
-	tsserver = {
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls
+	ts_ls = {
 		diagnostics = { "eslint" },
 		formatters = { "prettier" },
 	},
