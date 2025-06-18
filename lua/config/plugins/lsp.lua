@@ -43,10 +43,10 @@ return {
 		-- configuration: https://github.com/neovim/nvim-lspconfig/pull/3867
 		configs.kotlin_lsp = {
 			default_config = {
-				cmd = { "kotlin-lsp", "--stdio" }, -- Adjust path if needed
+				cmd = { "kotlin-lsp", "--stdio" },
 				filetypes = { "kotlin", "kotlin_script", "gradle.kts" },
 				root_dir = lspconfig.util.root_pattern("settings.gradle.kts", "build.gradle.kts", ".git"),
-				settings = {}, -- No custom settings needed by default
+				settings = {},
 			},
 		}
 
