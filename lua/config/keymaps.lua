@@ -19,6 +19,7 @@ wk.add({
 	{ "<leader>g", group = "Git" },
 	{ "<leader>o", group = "Open" },
 	{ "<leader>w", group = "Window" },
+	{ "<leader>t", group = "Test" },
 })
 
 nmap({
@@ -80,36 +81,9 @@ function M.lsp_keybindings()
 		{ "K", vim.lsp.buf.hover, opts("Hover Documentation") },
 		{ "<C-k>", vim.lsp.buf.signature_help, opts("Signature Documentation") },
 
+		-- [C]ode
 		{ "<leader>cr", vim.lsp.buf.rename, opts("[C]ode [R]ename") },
 		{ "<leader>ca", vim.lsp.buf.code_action, opts("[C]ode [A]ction") },
-		{
-			"<leader>tr",
-			function()
-				require("neotest").run.run()
-			end,
-			opts("[T]est [R]un"),
-		},
-		{
-			"<leader>tf",
-			function()
-				require("neotest").run.run(vim.fn.expand("%"))
-			end,
-			opts("[T]est run [F]ile"),
-		},
-		{
-			"<leader>tS",
-			function()
-				require("neotest").summary.toggle()
-			end,
-			opts("[T]est [S]ummary"),
-		},
-		{
-			"<leader>to",
-			function()
-				require("neotest").output.open({ enter = true })
-			end,
-			opts("[T]est [O]utput"),
-		},
 		{
 			"<leader>cf",
 			function()
@@ -127,6 +101,36 @@ function M.lsp_keybindings()
 			"<leader>cR",
 			cmd("TextCaseOpenTelescopeLSPChange"),
 			opts("[C]ode [R]ename Case"),
+		},
+
+		-- [T]est
+		{
+			"<leader>tr",
+			function()
+				require("neotest").run.run()
+			end,
+			opts("[T]est [R]un"),
+		},
+		{
+			"<leader>tf",
+			function()
+				require("neotest").run.run(vim.fn.expand("%"))
+			end,
+			opts("[T]est run [F]ile"),
+		},
+		{
+			"<leader>ts",
+			function()
+				require("neotest").summary.toggle()
+			end,
+			opts("[T]est [S]ummary"),
+		},
+		{
+			"<leader>to",
+			function()
+				require("neotest").output.open({ enter = true })
+			end,
+			opts("[T]est [O]utput"),
 		},
 	})
 
