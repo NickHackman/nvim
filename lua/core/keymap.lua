@@ -19,7 +19,7 @@ local M = {}
 -- { "<leader>e", "gg", {} }
 ---@param mapping table
 local function mapping_validation(mapping)
-	assert(vim.tbl_islist(mapping), string.format("mapping %s expected a list", vim.inspect(mapping)))
+	assert(vim.islist(mapping), string.format("mapping %s expected a list", vim.inspect(mapping)))
 
 	local len = #mapping
 	assert(
