@@ -77,9 +77,6 @@ function M.lsp_keybindings()
 		{ "gI", vim.lsp.buf.implementation, opts("[G]oto [I]mplementation") },
 		{ "gD", vim.lsp.buf.type_definition, opts("Type [D]efinition") },
 
-		-- Symbols Search
-		{ "<leader>d?", telescope.lsp_document_symbols, opts("Document Symbols") },
-		{ "<leader>?", telescope.lsp_dynamic_workspace_symbols, opts("Workspace Symbols") },
 		{ "K", vim.lsp.buf.hover, opts("Hover Documentation") },
 		{ "<C-k>", vim.lsp.buf.signature_help, opts("Signature Documentation") },
 
