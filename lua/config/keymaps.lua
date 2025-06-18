@@ -47,11 +47,7 @@ nmap({
 	{ "<leader>bp", cmd("bprev"), opts("[B]uffer [P]revious") },
 
 	-- <leader>d
-	{ "<leader>dt", cmd("TroubleToggle"), opts("[D]iagnostics [T]oggle") },
-	{ "<leader>dw", cmd("TroubleToggle workspace_diagnostics"), opts("[D]iagnostics [W]orkspace") },
-	{ "<leader>dd", cmd("TroubleToggle document_diagnostics"), opts("[D]iagnostics [D]ocument") },
-	{ "<leader>dl", cmd("TroubleToggle loclist"), opts("[D]iagnostics [L]ocal") },
-	{ "<leader>dq", cmd("TroubleToggle quickfix"), opts("[D]iagnostics [Q]uickfix") },
+	{ "<leader>dt", cmd("Trouble diagnostics"), opts("[D]iagnostics [T]oggle") },
 
 	-- <leader>[o]pen
 	{ "<leader>op", cmd("Neotree toggle"), opts("[O]pen [P]roject") },
