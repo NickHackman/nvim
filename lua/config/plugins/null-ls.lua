@@ -22,9 +22,9 @@ end
 
 -- Fill in the gaps with Neovim's builtin LSP
 --
--- https://github.com/jose-elias-alvarez/null-ls.nvim
+-- https://github.com/nvimtools/none-ls.nvim
 return {
-	"jose-elias-alvarez/null-ls.nvim",
+	"nvimtools/none-ls.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -32,9 +32,9 @@ return {
 		local servers = require("config.lsp-servers")
 		local null_ls = require("null-ls")
 
-		-- Builtin to null-ls
+		-- Builtin to none-ls
 		--
-		-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+		-- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
 		local sources = {
 			null_ls.builtins.completion.spell,
 		}
