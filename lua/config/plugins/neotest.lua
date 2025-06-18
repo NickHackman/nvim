@@ -35,7 +35,7 @@ return {
 			-- Local clone of https://github.com/codymikol/neotest-kotlin with minor modifications
 			{ dir = "~/GitHub/neotest-kotlin" },
 			-- Golang
-			{ "fredrikaverpil/neotest-golang", version = "*" },
+			"fredrikaverpil/neotest-golang",
 			-- Typescript/Javascript Jest
 			"nvim-neotest/neotest-jest"
 		},
