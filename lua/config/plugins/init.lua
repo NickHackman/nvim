@@ -82,8 +82,8 @@ return {
 			require("neogit").setup({
 				auto_refresh = true,
 				integrations = {
-					diffview = true
-				}
+					diffview = true,
+				},
 			})
 		end,
 	},
