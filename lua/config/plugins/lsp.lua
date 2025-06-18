@@ -21,9 +21,13 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+		local mason_servers = vim.deepcopy(servers)
+		-- removes kotlin_lsp because that lsp isn't installable via Mason
+		mason_servers["kotlin_lsp"] = nil
+
 		-- Ensure all LSPs are installed
 		mason_lspconfig.setup({
-			ensure_installed = vim.tbl_keys(servers),
+			ensure_installed = vim.tbl_keys(mason_servers),
 		})
 
 		for name, server in pairs(servers) do
@@ -34,26 +38,5 @@ return {
 				settings = server.settings or {}
 			})
 		end
-
-		local configs = require("lspconfig.configs")
-
-		-- Kotlin LSP
-		--
-		-- Upstream: https://github.com/Kotlin/kotlin-lsp
-		-- configuration: https://github.com/neovim/nvim-lspconfig/pull/3867
-		configs.kotlin_lsp = {
-			default_config = {
-				cmd = { "kotlin-lsp", "--stdio" },
-				filetypes = { "kotlin", "kotlin_script", "gradle.kts" },
-				root_dir = lspconfig.util.root_pattern("settings.gradle.kts", "build.gradle.kts", ".git"),
-				settings = {},
-			},
-		}
-
-		lspconfig.kotlin_lsp.setup({
-			capabilities = capabilities,
-			on_attach = require("config.keymaps").lsp_keybindings,
-			settings = {},
-		})
 	end,
 }

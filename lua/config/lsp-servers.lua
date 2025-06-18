@@ -19,6 +19,16 @@ return {
 		formatters = { "rustfmt" },
 	},
 
+	-- Kotlin LSP
+	--
+	-- Upstream: https://github.com/Kotlin/kotlin-lsp
+	-- configuration: https://github.com/neovim/nvim-lspconfig/pull/3867
+	kotlin_lsp = {
+		settings = {
+			single_file_support = false,
+		},
+	},
+
 	-- Typescript
 	--
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls
