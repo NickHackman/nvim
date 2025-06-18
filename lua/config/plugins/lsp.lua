@@ -27,6 +27,7 @@ return {
 
 		-- Ensure all LSPs are installed
 		mason_lspconfig.setup({
+			automatic_enable = {},
 			ensure_installed = vim.tbl_keys(mason_installable_servers),
 		})
 
