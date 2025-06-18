@@ -14,7 +14,6 @@ return {
 		"folke/neodev.nvim",
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
 		local servers = require("config.lsp-servers")
 
@@ -28,10 +27,11 @@ return {
 		})
 
 		for name, server in pairs(servers) do
-			lspconfig[name].setup({
+			vim.lsp.enable(name)
+			vim.lsp.config(name, {
 				capabilities = capabilities,
 				on_attach = require("config.keymaps").lsp_keybindings,
-				settings = server.settings or {},
+				settings = server.settings or {}
 			})
 		end
 
