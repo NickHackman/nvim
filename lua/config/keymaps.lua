@@ -83,6 +83,34 @@ function M.lsp_keybindings()
 		{ "<leader>cr", vim.lsp.buf.rename, opts("[C]ode [R]ename") },
 		{ "<leader>ca", vim.lsp.buf.code_action, opts("[C]ode [A]ction") },
 		{
+			"<leader>tr",
+			function()
+				require("neotest").run.run()
+			end,
+			opts("[T]est [R]un"),
+		},
+		{
+			"<leader>tf",
+			function()
+				require("neotest").run.run(vim.fn.expand("%"))
+			end,
+			opts("[T]est run [F]ile"),
+		},
+		{
+			"<leader>tS",
+			function()
+				require("neotest").summary.toggle()
+			end,
+			opts("[T]est [S]ummary"),
+		},
+		{
+			"<leader>to",
+			function()
+				require("neotest").output.open({ enter = true })
+			end,
+			opts("[T]est [O]utput"),
+		},
+		{
 			"<leader>cf",
 			function()
 				vim.lsp.buf.format({
