@@ -49,6 +49,7 @@ nmap({
 
 	-- <leader>d
 	{ "<leader>dt", cmd("Trouble diagnostics"), opts("[D]iagnostics [T]oggle") },
+	{ "<leader>ds", telescope.diagnostics, opts("[D]iagnostics [S]earch") },
 
 	-- <leader>[o]pen
 	{ "<leader>op", cmd("Neotree toggle"), opts("[O]pen [P]roject") },
