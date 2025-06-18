@@ -26,6 +26,7 @@ wk.register({
 nmap({
 	-- <leader>
 	{ "<leader>/", telescope.live_grep, opts("Search by Grep") },
+	{ "<leader>?", telescope.resume, opts("Resumes previous Telescope window") },
 	{ "<leader><leader>", telescope.find_files, opts("Search [G]it [F]iles") },
 
 	-- <leader>[w]indow
