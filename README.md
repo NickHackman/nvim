@@ -1,3 +1,3 @@
 # init.lua
 
-My personal Neovim setup using modules.
+My personal [Neovim](https://neovim.io/) setup using modules.
