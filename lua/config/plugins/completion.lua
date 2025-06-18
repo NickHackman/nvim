@@ -61,6 +61,7 @@ return {
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = 'orgmode' }
 			},
 		})
 	end,
