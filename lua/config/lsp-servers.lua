@@ -34,6 +34,11 @@ return {
 		formatters = { "prettier" },
 	},
 
+	-- Tailwindcss
+	--
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss
+	tailwindcss = {},
+
 	-- JSON
 	--
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls
