@@ -21,7 +21,12 @@ return {
 					-- Jest support
 					--
 					-- https://github.com/nvim-neotest/neotest-jest
-					require("neotest-jest")({})
+					require("neotest-jest")({}),
+
+					-- Lua support
+					--
+					-- https://github.com/nvim-neotest/neotest-plenary
+					require("neotest-plenary")
 				},
 			})
 		end,
@@ -37,7 +42,9 @@ return {
 			-- Golang
 			"fredrikaverpil/neotest-golang",
 			-- Typescript/Javascript Jest
-			"nvim-neotest/neotest-jest"
+			"nvim-neotest/neotest-jest",
+			-- Lua
+			"nvim-neotest/neotest-plenary",
 		},
 	},
 }
