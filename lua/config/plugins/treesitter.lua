@@ -15,6 +15,9 @@ return {
 				-- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 				ensure_installed = "all",
 				auto_install = true,
+				sync_install = false,
+				ignore_install = {},
+				modules = {},
 				highlight = {
 					enable = true,
 					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
