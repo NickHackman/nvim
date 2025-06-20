@@ -18,7 +18,6 @@ wk.add({
 	{ "<leader>d", group = "Diagnostics" },
 	{ "<leader>g", group = "Git" },
 	{ "<leader>o", group = "Open" },
-	{ "<leader>w", group = "Window" },
 	{ "<leader>t", group = "Test" },
 })
 
@@ -27,19 +26,6 @@ nmap({
 	{ "<leader>/", telescope.live_grep, opts("Search by Grep") },
 	{ "<leader>?", telescope.resume, opts("Resumes previous Telescope window") },
 	{ "<leader><leader>", telescope.find_files, opts("Search [G]it [F]iles") },
-
-	-- <leader>[w]indow
-	{ "<leader>wv", "<c-w>v", opts("[W]indow [V]ertical Split") },
-	{ "<leader>ws", "<c-w>s", opts("[W]indow [S]plit") },
-	{ "<leader>wl", "<c-w>l", opts("[W]indow Right") },
-	{ "<leader>wh", "<c-w>h", opts("[W]indow Left") },
-	{ "<leader>wj", "<c-w>j", opts("[W]indow Down") },
-	{ "<leader>wk", "<c-w>k", opts("[W]indow Up") },
-	{ "<leader>wq", ":wq<CR>", opts("[W]indow [Q]uit") },
-	{ "<leader>wH", cmd("vertical resize +5"), opts("[W]indow Resize Left") },
-	{ "<leader>wL", cmd("vertical resize -5"), opts("[W]indow Resize Right") },
-	{ "<leader>wJ", cmd("resize -5"), opts("[W]indow Resize Down") },
-	{ "<leader>wK", cmd("resize +5"), opts("[W]indow Resize Up") },
 
 	-- <leader>[b]uffer
 	{ "<leader>bs", telescope.buffers, opts("[B]uffer [S]earch") },
