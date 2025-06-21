@@ -26,7 +26,7 @@ return {
 					-- Lua support
 					--
 					-- https://github.com/nvim-neotest/neotest-plenary
-					require("neotest-plenary")
+					require("neotest-plenary"),
 				},
 			})
 		end,
