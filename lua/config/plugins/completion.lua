@@ -3,11 +3,11 @@
 -- https://github.com/saghen/blink.cmp
 return {
 	"saghen/blink.cmp",
+	version = "1.*",
 	dependencies = {
 		-- Adds a number of user-friendly snippets
 		"rafamadriz/friendly-snippets",
 	},
-
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
