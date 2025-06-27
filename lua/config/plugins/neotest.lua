@@ -26,7 +26,13 @@ return {
 					-- Lua support
 					--
 					-- https://github.com/nvim-neotest/neotest-plenary
-					require("neotest-plenary"),
+					require("neotest-plenary")({
+						projects = {
+							["~/GitHub/neotest-kotlin"] = require("neotest-plenary")({
+								min_init = "tests/minimal_init.lua",
+							}),
+						},
+					}),
 				},
 			})
 		end,
