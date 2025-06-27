@@ -70,6 +70,8 @@ function M.lsp_keybindings()
 		-- [C]ode
 		{ "<leader>cr", vim.lsp.buf.rename, opts("[C]ode [R]ename") },
 		{ "<leader>ca", vim.lsp.buf.code_action, opts("[C]ode [A]ction") },
+		{ "<leader>cc", vim.lsp.codelens.run, opts("[C]ode lens") },
+		{ "<leader>cC", vim.lsp.codelens.refresh, opts("[C]ode lens refresh") },
 		{
 			"<leader>cf",
 			function()

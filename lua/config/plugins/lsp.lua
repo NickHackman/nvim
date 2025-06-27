@@ -36,7 +36,23 @@ return {
 
 			vim.lsp.config(name, {
 				capabilities = capabilities,
-				on_attach = require("config.keymaps").lsp_keybindings,
+				---@param client vim.lsp.Client
+				---@param bufnr integer
+				on_attach = function(client, bufnr)
+					if client:supports_method("textDocument/inlayHint") then
+						vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+					end
+
+					if client:supports_method("textDocument/codeLens") then
+						vim.lsp.codelens.refresh()
+						vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+							buffer = bufnr,
+							callback = vim.lsp.codelens.refresh,
+						})
+					end
+
+					require("config.keymaps").lsp_keybindings()
+				end,
 				settings = server.settings or {},
 			})
 		end
