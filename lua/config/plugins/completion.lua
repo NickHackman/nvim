@@ -15,7 +15,7 @@ return {
 			preset = "default",
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
-			["<CR>"] = { "accept_and_enter", "fallback" },
+			["<CR>"] = { "accept", "fallback" },
 		},
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
