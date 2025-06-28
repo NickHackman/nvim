@@ -1,5 +1,6 @@
 local telescope = require("telescope.builtin")
 local wk = require("which-key")
+local harpoon = require("harpoon")
 
 local keymap = require("core.keymap")
 
@@ -31,6 +32,55 @@ nmap({
 	{ "<leader>bs", telescope.buffers, opts("[B]uffer [S]earch") },
 	{ "<leader>bn", cmd("bnext"), opts("[B]uffer [N]ext") },
 	{ "<leader>bp", cmd("bprev"), opts("[B]uffer [P]revious") },
+	{
+		"<leader>ba",
+		function()
+			harpoon:list():add()
+		end,
+		opts("Harpoon [B]uffer [A]dd"),
+	},
+	{
+		"<leader>bd",
+		function()
+			harpoon:list():remove()
+		end,
+		opts("Harpoon [B]uffer [D]elete"),
+	},
+	{
+		"<leader>bc",
+		function()
+			harpoon:list():clear()
+		end,
+		opts("Harpoon [B]uffer [C]lear"),
+	},
+	{
+		"<leader>b1",
+		function()
+			harpoon:list():select(1)
+		end,
+		opts("Harpoon [B]uffer [1]"),
+	},
+	{
+		"<leader>b2",
+		function()
+			harpoon:list():select(2)
+		end,
+		opts("Harpoon [B]uffer [2]"),
+	},
+	{
+		"<leader>b3",
+		function()
+			harpoon:list():select(3)
+		end,
+		opts("Harpoon [B]uffer [3]"),
+	},
+	{
+		"<leader>b4",
+		function()
+			harpoon:list():select(4)
+		end,
+		opts("Harpoon [B]uffer [4]"),
+	},
 
 	-- <leader>d
 	{ "<leader>dt", cmd("Trouble diagnostics"), opts("[D]iagnostics [T]oggle") },
