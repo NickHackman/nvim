@@ -18,8 +18,8 @@ opt.relativenumber = true
 
 -- Use https://github.com/BurntSushi/ripgrep over grep
 if vim.fn.executable("rg") == 1 then
-	opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
-	opt.grepprg = "rg --vimgrep --no-heading --smart-case"
+  opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+  opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 end
 
 -------------------------------------------

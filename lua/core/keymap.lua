@@ -19,48 +19,51 @@ local M = {}
 -- { "<leader>e", "gg", {} }
 ---@param mapping table
 local function mapping_validation(mapping)
-	assert(vim.islist(mapping), string.format("mapping %s expected a list", vim.inspect(mapping)))
+  assert(
+    vim.islist(mapping),
+    string.format("mapping %s expected a list", vim.inspect(mapping))
+  )
 
-	local len = #mapping
-	assert(
-		len == 2 or len == 3,
-		string.format(
-			"mapping `%s` expected either 2 arguments or 3 { mapping, expr, [opts] }, but got %d",
-			vim.inspect(mapping),
-			len
-		)
-	)
+  local len = #mapping
+  assert(
+    len == 2 or len == 3,
+    string.format(
+      "mapping `%s` expected either 2 arguments or 3 { mapping, expr, [opts] }, but got %d",
+      vim.inspect(mapping),
+      len
+    )
+  )
 
-	assert(
-		type(mapping[1]) == "string",
-		string.format(
-			"mapping `%s` first argument must be a string key combination, but got %s",
-			vim.inspect(mapping),
-			type(mapping[1])
-		)
-	)
+  assert(
+    type(mapping[1]) == "string",
+    string.format(
+      "mapping `%s` first argument must be a string key combination, but got %s",
+      vim.inspect(mapping),
+      type(mapping[1])
+    )
+  )
 
-	assert(
-		type(mapping[2]) == "string" or type(mapping[2]) == "function",
-		string.format(
-			"mapping `%s` second argument must be a string or function action, but got %s",
-			vim.inspect(mapping),
-			type(mapping[2])
-		)
-	)
+  assert(
+    type(mapping[2]) == "string" or type(mapping[2]) == "function",
+    string.format(
+      "mapping `%s` second argument must be a string or function action, but got %s",
+      vim.inspect(mapping),
+      type(mapping[2])
+    )
+  )
 
-	if len == 2 then
-		return
-	end
+  if len == 2 then
+    return
+  end
 
-	assert(
-		type(mapping[3]) == "table",
-		string.format(
-			"mapping `%s` optional third argument must be a table of options, but got %s",
-			mapping,
-			type(mapping[3])
-		)
-	)
+  assert(
+    type(mapping[3]) == "table",
+    string.format(
+      "mapping `%s` optional third argument must be a table of options, but got %s",
+      mapping,
+      type(mapping[3])
+    )
+  )
 end
 
 --- Constructs a custom |mapping| function that calls |vim.keymap| on provided mappings
@@ -86,25 +89,25 @@ end
 ---@param opts ?table default options provided to |vim.keymap.set| unless overidden
 ---@return function mapping
 function M.map(mode, opts)
-	vim.validate({
-		mode = { mode, { "table", "string" } },
-	})
+  vim.validate({
+    mode = { mode, { "table", "string" } },
+  })
 
-	return function(mappings)
-		vim.validate({
-			mappings = { mappings, "table" },
-		})
+  return function(mappings)
+    vim.validate({
+      mappings = { mappings, "table" },
+    })
 
-		for _, mapping in ipairs(mappings) do
-			mapping_validation(mapping)
+    for _, mapping in ipairs(mappings) do
+      mapping_validation(mapping)
 
-			local key_combination = mapping[1]
-			local action = mapping[2]
-			local options = vim.tbl_extend("force", opts or {}, mapping[3] or {})
+      local key_combination = mapping[1]
+      local action = mapping[2]
+      local options = vim.tbl_extend("force", opts or {}, mapping[3] or {})
 
-			vim.keymap.set(mode, key_combination, action, options)
-		end
-	end
+      vim.keymap.set(mode, key_combination, action, options)
+    end
+  end
 end
 
 --- Constructs a command
@@ -119,11 +122,11 @@ end
 ---@param str string
 ---@return string command
 function M.cmd(str)
-	vim.validate({
-		str = { str, "string" },
-	})
+  vim.validate({
+    str = { str, "string" },
+  })
 
-	return "<cmd>" .. str .. "<CR>"
+  return "<cmd>" .. str .. "<CR>"
 end
 
 ---Create options to pass to |vim.keymap.set| via |map|.
@@ -134,36 +137,36 @@ end
 --
 ---@param ... function|string
 function M.opts(...)
-	local options = {}
-	local varargs = { ... }
+  local options = {}
+  local varargs = { ... }
 
-	for i, value in ipairs(varargs) do
-		assert(
-			type(value) == "string" or type(value) == "function",
-			string.format(
-				"expected option to be a string or function, but got `%s` at index `%d`",
-				vim.inspect(value),
-				i
-			)
-		)
+  for i, value in ipairs(varargs) do
+    assert(
+      type(value) == "string" or type(value) == "function",
+      string.format(
+        "expected option to be a string or function, but got `%s` at index `%d`",
+        vim.inspect(value),
+        i
+      )
+    )
 
-		if type(value) == "string" then
-			assert(
-				options.desc == nil,
-				string.format(
-					"expected only a single description, but got two. First `%s` then `%s`",
-					options.desc,
-					value
-				)
-			)
+    if type(value) == "string" then
+      assert(
+        options.desc == nil,
+        string.format(
+          "expected only a single description, but got two. First `%s` then `%s`",
+          options.desc,
+          value
+        )
+      )
 
-			options.desc = value
-		else
-			value(options)
-		end
-	end
+      options.desc = value
+    else
+      value(options)
+    end
+  end
 
-	return options
+  return options
 end
 
 --- Excutes the command silently
@@ -172,9 +175,9 @@ end
 --
 ---@return function setter
 function M.silent()
-	return function(options)
-		options.silent = true
-	end
+  return function(options)
+    options.silent = true
+  end
 end
 
 --- Evalute the <action> as an expression
@@ -183,9 +186,9 @@ end
 --
 ---@return function setter
 function M.expr()
-	return function(options)
-		options.expr = true
-	end
+  return function(options)
+    options.expr = true
+  end
 end
 
 --- Prevent remapping of the <key combination>
@@ -194,9 +197,9 @@ end
 --
 ---@return function setter
 function M.noremap()
-	return function(options)
-		options.noremap = true
-	end
+  return function(options)
+    options.noremap = true
+  end
 end
 
 --- Disable waiting for more keypresses after the key combination is matched
@@ -205,9 +208,9 @@ end
 --
 ---@return function setter
 function M.nowait()
-	return function(options)
-		options.nowait = true
-	end
+  return function(options)
+    options.nowait = true
+  end
 end
 
 return M
