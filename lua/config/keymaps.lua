@@ -137,7 +137,7 @@ function M.lsp_keybindings()
 
 		{
 			"<leader>cR",
-			cmd("TextCaseOpenTelescopeLSPChange"),
+			cmd("TextCaseOpenTelescope"),
 			opts("[C]ode [R]ename Case"),
 		},
 
