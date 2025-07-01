@@ -24,7 +24,10 @@ return {
 			-- Adjusts spacing to ensure icons are aligned
 			nerd_font_variant = "mono",
 		},
-		completion = { documentation = { auto_show = true } },
+		completion = {
+			accept = { auto_brackets = { enabled = true } },
+			documentation = { auto_show = true },
+		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
