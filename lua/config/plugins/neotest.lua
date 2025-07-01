@@ -48,9 +48,7 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       -- Kotlin
-      --
-      -- Local clone of https://github.com/codymikol/neotest-kotlin with minor modifications
-      { dir = "~/GitHub/neotest-kotlin" },
+      "codymikol/neotest-kotlin",
       -- Golang
       "fredrikaverpil/neotest-golang",
       -- Typescript/Javascript Jest
