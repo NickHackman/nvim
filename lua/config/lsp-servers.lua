@@ -1,6 +1,26 @@
----@class LanguageServerConfig
+---Wrapper around `vim.lsp.Config` that will override the `nvim-lspconfig` LSP
+---configuration with the same name/key.
+---
+---https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+---
+---```lua
+------ Markdowns
+------ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#marksman
+---marksman = {
+---  diagnostics = {"proseline", "write_good"},
+---  formatters = {"prettier"}
+---}
+---```
+---@class LanguageServerConfig : vim.lsp.Config
+---Diagnostics providers for this LSP that will be executed via none-ls
+---
+---https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md#diagnostics
 ---@field diagnostics? string[]
+---Formatters for this LSP that will be executed via none-ls
+---
+---https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md#formatting
 ---@field formatters? string[]
+---Settings to provide directly to the LSP
 ---@field settings? table
 
 -- This should include all LSPs by name provided in nvim-lspconfig and their respected settings
