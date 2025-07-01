@@ -7,10 +7,12 @@ return {
 	dependencies = {
 		-- Adds a number of user-friendly snippets
 		"rafamadriz/friendly-snippets",
+		{ "L3MON4D3/LuaSnip", version = "v2.*" },
 	},
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
+		snippets = { preset = "luasnip" },
 		keymap = {
 			preset = "default",
 			["<Tab>"] = { "select_next", "fallback" },
