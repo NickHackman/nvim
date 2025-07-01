@@ -1,8 +1,14 @@
+---@class LanguageServerConfig
+---@field diagnostics? string[]
+---@field formatters? string[]
+---@field settings? table
+
 -- This should include all LSPs by name provided in nvim-lspconfig and their respected settings
 -- and null-ls formatters and diagnostics tools.
 --
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+---@type table<string, LanguageServerConfig>
 return {
 	-- Markdowns
 	--
