@@ -6,6 +6,9 @@ return {
     "nvim-neotest/neotest",
     event = "VeryLazy",
     config = function()
+      local namespace_id = vim.api.nvim_create_namespace("neotest")
+      vim.diagnostic.config({virtual_text = true}, namespace_id)
+
       require("neotest").setup({
         adapters = {
           -- Kotlin support (specifically KoTest)
