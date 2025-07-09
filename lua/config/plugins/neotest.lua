@@ -7,7 +7,7 @@ return {
     event = "VeryLazy",
     config = function()
       local namespace_id = vim.api.nvim_create_namespace("neotest")
-      vim.diagnostic.config({virtual_text = true}, namespace_id)
+      vim.diagnostic.config({ virtual_text = true }, namespace_id)
 
       require("neotest").setup({
         adapters = {
@@ -32,6 +32,9 @@ return {
           require("neotest-plenary")({
             projects = {
               ["~/GitHub/neotest-kotlin"] = require("neotest-plenary")({
+                min_init = "tests/minimal_init.lua",
+              }),
+              ["~/GitHub/neotest/"] = require("neotest-plenary")({
                 min_init = "tests/minimal_init.lua",
               }),
             },
