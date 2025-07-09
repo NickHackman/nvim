@@ -100,7 +100,14 @@ nmap({
   },
 
   -- <leader>[o]pen
-  { "<leader>op", cmd("Neotree toggle"), opts("[O]pen [P]roject") },
+  { "<leader>ot", cmd("Neotree toggle"), opts("[O]pen [T]ree") },
+  {
+    "<leader>op",
+    function()
+      require("telescope").extensions.projects.projects({})
+    end,
+    opts("[O]pen [P]roject"),
+  },
   { "<leader>og", cmd("Neogit"), opts("[O]pen Ma[g]it") },
   {
     "<leader>od",

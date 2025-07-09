@@ -29,6 +29,14 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup({})
+      require("telescope").load_extension("projects")
+    end,
+  },
+
   -- Status line
   --
   -- https://github.com/nvim-lualine/lualine.nvim
