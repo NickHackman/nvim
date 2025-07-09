@@ -83,12 +83,30 @@ nmap({
   },
 
   -- <leader>d
-  { "<leader>dt", cmd("Trouble diagnostics"), opts("[D]iagnostics [T]oggle") },
   { "<leader>ds", telescope.diagnostics, opts("[D]iagnostics [S]earch") },
+  {
+    "<leader>dn",
+    function()
+      vim.diagnostic.jump({ count = 1 })
+    end,
+    opts("[D]iagnostics [N]ext"),
+  },
+  {
+    "<leader>dp",
+    function()
+      vim.diagnostic.jump({ count = -1 })
+    end,
+    opts("[D]iagnostics [P]revious"),
+  },
 
   -- <leader>[o]pen
   { "<leader>op", cmd("Neotree toggle"), opts("[O]pen [P]roject") },
   { "<leader>og", cmd("Neogit"), opts("[O]pen Ma[g]it") },
+  {
+    "<leader>od",
+    cmd("Trouble diagnostics toggle"),
+    opts("[O]pen [D]iagnostics"),
+  },
   { "<leader>ou", cmd("UndotreeToggle"), opts("[O]pen Undotree") },
 
   -- open terminal on the bottom with no line numbers
