@@ -100,7 +100,7 @@ nmap({
   },
 
   -- <leader>[o]pen
-  { "<leader>ot", cmd("Neotree toggle"), opts("[O]pen [T]ree") },
+  { "<leader>of", cmd("Neotree toggle"), opts("[O]pen [F]inder") },
   {
     "<leader>op",
     function()
