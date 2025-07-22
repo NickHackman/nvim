@@ -15,6 +15,7 @@ opt.showmatch = true -- show matching paren
 opt.undofile = true -- undofile for use with undotree
 opt.signcolumn = "yes"
 opt.relativenumber = true
+opt.cursorline = true
 
 -- Use https://github.com/BurntSushi/ripgrep over grep
 if vim.fn.executable("rg") == 1 then
@@ -28,6 +29,7 @@ end
 opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = false
+opt.completeopt = "menuone,noselect,fuzzy"
 
 -------------------------------------------
 -- Performance
