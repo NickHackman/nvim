@@ -27,6 +27,8 @@ return {
     completion = {
       accept = {
         auto_brackets = { enabled = false },
+        -- increased to 1s for kotlin-lsp specifically as it timeouts out often
+        resolve_timeout_ms = 1000
       },
       documentation = { auto_show = true },
     },
