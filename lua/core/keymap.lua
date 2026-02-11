@@ -89,14 +89,10 @@ end
 ---@param opts ?table default options provided to |vim.keymap.set| unless overidden
 ---@return function mapping
 function M.map(mode, opts)
-  vim.validate({
-    mode = { mode, { "table", "string" } },
-  })
+  vim.validate("mode", mode, { "table", "string" })
 
   return function(mappings)
-    vim.validate({
-      mappings = { mappings, "table" },
-    })
+    vim.validate("mappings", mappings, "table")
 
     for _, mapping in ipairs(mappings) do
       mapping_validation(mapping)
@@ -122,9 +118,7 @@ end
 ---@param str string
 ---@return string command
 function M.cmd(str)
-  vim.validate({
-    str = { str, "string" },
-  })
+  vim.validate("str", str, "string")
 
   return "<cmd>" .. str .. "<CR>"
 end
