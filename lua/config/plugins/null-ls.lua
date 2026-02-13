@@ -37,7 +37,6 @@ return {
     -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
     local sources = {
       null_ls.builtins.completion.spell,
-      null_ls.builtins.formatting.ktlint,
     }
 
     for _, server in pairs(servers) do
