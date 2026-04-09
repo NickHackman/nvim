@@ -4,29 +4,50 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+    lazy = false,
+    -- https://www.reddit.com/r/neovim/comments/1s9y00d/for_anyone_experiencing_treesitter_issues_after/?rdt=56370
+    branch = "main",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        -- Supported Treesitter languages
-        --
-        -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-        ensure_installed = "all",
-        auto_install = true,
-        sync_install = false,
-        -- https://github.com/nvim-orgmode/orgmode?tab=readme-ov-file#installation
-        ignore_install = { "org" },
-        modules = {},
-        highlight = {
-          enable = true,
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
-        },
+      local treesitter = require("nvim-treesitter")
+
+      -- Supported Treesitter languages
+      --
+      -- https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
+      treesitter.install({
+            -- work
+        "kotlin",
+        "markdown",
+        "groovy",
+        "java",
+        "graphql",
+        "toml",
+        "yaml",
+        "json",
+        "tsv",
+        "csv",
+
+        -- personal
+        "kitty",
+        "zsh",
+        "bash",
+        "python",
+        "lua",
+        "vim",
+
+        -- git
+        "gitcommit",
+        "gitignore",
+        "git_rebase",
+        "gitattributes",
+        "git_config"
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "<filetype>" },
+        callback = function()
+          vim.treesitter.start()
+        end,
       })
     end,
   },
