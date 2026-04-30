@@ -28,12 +28,19 @@ return {
       accept = {
         auto_brackets = { enabled = false },
         -- increased to 1s for kotlin-lsp specifically as it timeouts out often
-        resolve_timeout_ms = 1000
+        resolve_timeout_ms = 1000,
       },
       documentation = { auto_show = true },
     },
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
+      per_filetype = {
+        sql = { "snippets", "dadbod", "buffer" },
+      },
+      -- add vim-dadbod-completion to your completion providers
+      providers = {
+        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+      },
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
